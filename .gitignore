@@ -1,0 +1,9 @@
+build/
+build_rk3568/
+*.o *.a *.bin *.out *.exe *.elf
+.vscode/ .settings/ .venv/ __pycache__/
+CMakeCache.txt CMakeFiles/ cmake_install.cmake
+lvgl/tmp.h lvgl/lv_conf_expanded.h lvgl/lv_conf_internal.h
+lvglsim main
+.DS_Store Thumbs.db *.pyc
+src/data/

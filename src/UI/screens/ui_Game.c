@@ -1,0 +1,14 @@
+#include "../ui.h"
+lv_obj_t *ui_Game=NULL;
+static void back_cb(lv_event_t *e){(void)e;ui_load_main_menu();}
+static void gesture_cb(lv_event_t *e){lv_dir_t d=lv_indev_get_gesture_dir(lv_indev_active());if(d==LV_DIR_RIGHT)ui_load_album();}
+static void snake_cb(lv_event_t *e){(void)e;ui_Snake_screen_init();}
+static void t2048_cb(lv_event_t *e){(void)e;ui_2048_screen_init();}
+void ui_Game_screen_init(void){
+    ui_Game=lv_obj_create(NULL);lv_obj_clear_flag(ui_Game,LV_OBJ_FLAG_SCROLLABLE);lv_obj_set_style_bg_color(ui_Game,lv_color_hex(0xfce4ec),0);lv_obj_set_style_bg_opa(ui_Game,LV_OPA_COVER,0);lv_obj_set_style_pad_all(ui_Game,0,0);
+    lv_obj_t *back=lv_btn_create(ui_Game);lv_obj_set_size(back,60,32);lv_obj_set_pos(back,16,12);lv_obj_set_style_bg_color(back,lv_color_hex(0x546E7A),0);lv_obj_set_style_radius(back,6,0);lv_obj_set_style_bg_color(back,lv_color_hex(0x37474F),LV_STATE_PRESSED);lv_obj_add_event_cb(back,back_cb,LV_EVENT_CLICKED,NULL);lv_obj_t *bl=lv_label_create(back);lv_label_set_text(bl,LV_SYMBOL_LEFT" Back");lv_obj_center(bl);
+    lv_obj_t *t=lv_label_create(ui_Game);lv_label_set_text(t,"Game Center");lv_obj_set_style_text_font(t,&lv_font_montserrat_24,0);lv_obj_set_style_text_color(t,lv_color_hex(0x37474F),0);lv_obj_align(t,LV_ALIGN_TOP_MID,0,20);
+    lv_obj_t *s1=lv_btn_create(ui_Game);lv_obj_set_size(s1,360,180);lv_obj_align(s1,LV_ALIGN_LEFT_MID,52,-20);lv_obj_set_style_bg_color(s1,lv_color_hex(0xE8F5E9),0);lv_obj_set_style_radius(s1,16,0);lv_obj_set_style_bg_opa(s1,LV_OPA_COVER,LV_STATE_PRESSED);lv_obj_add_event_cb(s1,snake_cb,LV_EVENT_CLICKED,NULL);lv_obj_t *si=lv_label_create(s1);lv_label_set_text(si,"🐍");lv_obj_set_style_text_font(si,&lv_font_montserrat_48,0);lv_obj_align(si,LV_ALIGN_TOP_MID,0,20);lv_obj_t *sn=lv_label_create(s1);lv_label_set_text(sn,"Snake");lv_obj_set_style_text_font(sn,&lv_font_montserrat_22,0);lv_obj_align(sn,LV_ALIGN_CENTER,0,0);
+    lv_obj_t *s2=lv_btn_create(ui_Game);lv_obj_set_size(s2,360,180);lv_obj_align(s2,LV_ALIGN_RIGHT_MID,-52,-20);lv_obj_set_style_bg_color(s2,lv_color_hex(0xE3F2FD),0);lv_obj_set_style_radius(s2,16,0);lv_obj_set_style_bg_opa(s2,LV_OPA_COVER,LV_STATE_PRESSED);lv_obj_add_event_cb(s2,t2048_cb,LV_EVENT_CLICKED,NULL);lv_obj_t *s2i=lv_label_create(s2);lv_label_set_text(s2i,"🔢");lv_obj_set_style_text_font(s2i,&lv_font_montserrat_48,0);lv_obj_align(s2i,LV_ALIGN_TOP_MID,0,20);lv_obj_t *s2n=lv_label_create(s2);lv_label_set_text(s2n,"2048");lv_obj_set_style_text_font(s2n,&lv_font_montserrat_22,0);lv_obj_align(s2n,LV_ALIGN_CENTER,0,0);
+    lv_obj_t *sw=lv_label_create(ui_Game);lv_label_set_text(sw,"Swipe left/right to switch");lv_obj_set_style_text_color(sw,lv_color_hex(0x90A4AE),0);lv_obj_set_style_text_font(sw,&lv_font_montserrat_12,0);lv_obj_align(sw,LV_ALIGN_BOTTOM_MID,0,-10);lv_obj_add_event_cb(ui_Game,gesture_cb,LV_EVENT_GESTURE,NULL);}
+void ui_Game_screen_destroy(void){if(ui_Game){lv_obj_del(ui_Game);ui_Game=NULL;}}
