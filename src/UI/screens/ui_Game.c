@@ -2,8 +2,8 @@
 lv_obj_t *ui_Game=NULL;
 static void back_cb(lv_event_t *e){(void)e;ui_load_main_menu();}
 static void gesture_cb(lv_event_t *e){lv_dir_t d=lv_indev_get_gesture_dir(lv_indev_active());if(d==LV_DIR_RIGHT)ui_load_album();}
-static void snake_cb(lv_event_t *e){(void)e;ui_Snake_screen_init();}
-static void t2048_cb(lv_event_t *e){(void)e;ui_2048_screen_init();}
+static void snake_cb(lv_event_t *e){(void)e;ui_Snake_screen_destroy();ui_Snake_screen_init();lv_scr_load(ui_Snake);}
+static void t2048_cb(lv_event_t *e){(void)e;ui_2048_screen_destroy();ui_2048_screen_init();lv_scr_load(ui_2048);}
 void ui_Game_screen_init(void){
     ui_Game=lv_obj_create(NULL);lv_obj_clear_flag(ui_Game,LV_OBJ_FLAG_SCROLLABLE);lv_obj_set_style_bg_color(ui_Game,lv_color_hex(0xfce4ec),0);lv_obj_set_style_bg_opa(ui_Game,LV_OPA_COVER,0);lv_obj_set_style_pad_all(ui_Game,0,0);
     lv_obj_t *back=lv_btn_create(ui_Game);lv_obj_set_size(back,60,32);lv_obj_set_pos(back,16,12);lv_obj_set_style_bg_color(back,lv_color_hex(0x546E7A),0);lv_obj_set_style_radius(back,6,0);lv_obj_set_style_bg_color(back,lv_color_hex(0x37474F),LV_STATE_PRESSED);lv_obj_add_event_cb(back,back_cb,LV_EVENT_CLICKED,NULL);lv_obj_t *bl=lv_label_create(back);lv_label_set_text(bl,LV_SYMBOL_LEFT" Back");lv_obj_center(bl);

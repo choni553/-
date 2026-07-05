@@ -13,7 +13,7 @@ static void destroy_all(void){
     ui_Splash_screen_destroy();ui_Login_screen_destroy();ui_Register_screen_destroy();
     ui_MainMenu_screen_destroy();ui_Game_screen_destroy();
     ui_Album_screen_destroy();ui_Music_screen_destroy();ui_Video_screen_destroy();
-    ui_Recognition_screen_destroy();ui_Controls_screen_destroy();}
+    ui_Recognition_screen_destroy();ui_Controls_screen_destroy();ui_Snake_screen_destroy();ui_2048_screen_destroy();}
 
 /* 呼吸切页：遮罩从小变大再消失，100ms */
 static void breath_x(void *var, int32_t v){lv_obj_set_width ((lv_obj_t *)var, v);}

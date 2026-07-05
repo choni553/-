@@ -9,7 +9,7 @@ extern "C" {
 #include "splash_anim.h"
 #include "gif_anim.h"
 #include "bg_login.h"
-extern lv_obj_t *ui_Splash,*ui_Login,*ui_Register,*ui_MainMenu,*ui_Game,*ui_Album,*ui_Music,*ui_Video,*ui_Recognition,*ui_Controls;
+extern lv_obj_t *ui_Splash,*ui_Login,*ui_Register,*ui_MainMenu,*ui_Game,*ui_Album,*ui_Music,*ui_Video,*ui_Recognition,*ui_Controls,*ui_Snake,*ui_2048;
 void ui_Splash_screen_init(void);void ui_Splash_screen_destroy(void);
 void ui_Login_screen_init(void);void ui_Login_screen_destroy(void);
 void ui_Register_screen_init(void);void ui_Register_screen_destroy(void);
