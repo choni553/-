@@ -13,7 +13,7 @@ static void *preload_thread(void *arg)
     (void)arg;
     const int stages[][2] = {{0,30},{30,70},{70,90},{90,100}};
     for (int s = 0; s < 4 && !done; s++) {
-        int duration = 1500000;
+        int duration = 750000;
         int start = stages[s][0], end = stages[s][1];
         for (int t = 0; t < 20 && !done; t++) {
             progress = start + (end - start) * t / 20;

@@ -15,7 +15,7 @@ static void tick_timer_cb(lv_timer_t *t)
 {
     (void)t;
     int p = preload_get_progress();
-    lv_bar_set_value(bar, p, LV_ANIM_ON);
+    lv_bar_set_value(bar, p, LV_ANIM_OFF);
 
     if (preload_is_done()) {
         if (tick_timer) { lv_timer_del(tick_timer); tick_timer = NULL; }
@@ -39,7 +39,7 @@ void ui_Splash_screen_init(void)
     /* Animated GIF (static const array from gif_anim.c) */
     lv_obj_t *anim = lv_animimg_create(ui_Splash);
     lv_animimg_set_src(anim, (const void **)gif_anim_frames, gif_anim_num_frames);
-    lv_animimg_set_duration(anim, gif_anim_duration);
+    lv_animimg_set_duration(anim, gif_anim_duration / 2);
     lv_animimg_set_repeat_count(anim, LV_ANIM_REPEAT_INFINITE);
     lv_obj_center(anim);
     lv_image_set_scale_x(anim, 546);
@@ -63,7 +63,7 @@ void ui_Splash_screen_init(void)
     preload_init();
 
     /* LVGL timer polls progress and updates the bar */
-    tick_timer = lv_timer_create(tick_timer_cb, 50, NULL);
+    tick_timer = lv_timer_create(tick_timer_cb, 20, NULL);
 }
 
 void ui_Splash_screen_destroy(void)
